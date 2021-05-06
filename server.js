@@ -5,7 +5,6 @@ const path = require("path")
 
 const PORT = process.env.PORT || 5555;
 
-const db = require("./models")
 
 const app = express();
 
@@ -20,32 +19,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
 });
 
-// // routes go here
-app.get("/api/workouts", (req, res) => {
-    db.Workout.find({}, (err, found) =>{
-        if (err) {
-            console.log(err)
-        } else {
-            res.json(found);
-        }
-    })
-})
-
-app.post("/api/workouts/:id", (req, res) => {
-    
-})
-
-app.get("/exercise", (req, res) =>{
-
-    res.sendFile(path.join(__dirname, 'public/exercise.html'));
-})
-
-app.get("/stats", (req, res) =>{
-
-    res.sendFile(path.join(__dirname, 'public/stats.html'));
-})
-
-
+app.use(require("./routes/api"));
+app.use(require("./routes/view"));
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
