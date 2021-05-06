@@ -53,8 +53,22 @@ router.put("/api/workouts/:id", ({ body, params }, res) => {
 });
 
 router.get(`/api/workouts/range`, (req, res) => {
-    // sort by id desc
-    // limit last 7 days
+  Workout.aggregate([
+    {
+      $addFields: {
+        totalDuration: { $sum: "$exercise.duration" },
+      },
+    },
+  ])
+    .sort({ _id: -1 })
+    .limit(7)
+    .then((workout) => {
+        reversed = workout.reverse()
+      res.json(reversed);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 });
 
 module.exports = router;
