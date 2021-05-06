@@ -1,7 +1,8 @@
 // // routes go here
-const db = require("./models")
+const db = require("../models");
+const router = require("express").Router();
 
-app.get("/api/workouts", (req, res) => {
+router.get("/api/workouts", (req, res) => {
     db.Workout.find({}, (err, found) =>{
         if (err) {
             console.log(err)
@@ -11,6 +12,8 @@ app.get("/api/workouts", (req, res) => {
     })
 })
 
-app.post("/api/workouts/:id", (req, res) => {
+router.post("/api/workouts/:id", (req, res) => {
     
 })
+
+module.exports = router;

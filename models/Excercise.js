@@ -1,33 +1,10 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+// const mongoose = require("mongoose");
+// const Schema = mongoose.Schema;
 
-const ExerciseSchema = new Schema({
-  type: {
-      type: String,
-      trim: true,
-    //   required: "Exercise type is required"
-    },
+// const ExerciseSchema = new Schema({
 
-    name: {
-        type: String,
-        trim: true,
-        // required: "Exercise name is required"
-    },
+// });
 
-    duration: {
-        type: Number,
-        // required: "Exercise duration is required"
-    },
+// const Exercise = mongoose.model("Exercise", ExerciseSchema);
 
-    weight:Number,
-
-    distance: Number,
-
-    reps: Number,
-
-    sets: Number
-});
-
-const Exercise = mongoose.model("Exercise", ExerciseSchema);
-
-module.exports = Exercise;
+// module.exports = Exercise;
