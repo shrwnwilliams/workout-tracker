@@ -25,4 +25,14 @@ router.put("/api/workouts/:id", ({ body, params }, res) => {
     });
 });
 
+router.get(`/api/workouts/range`, (req, res) =>{
+    db.Workout.find({}, (err, found) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.json(found);
+        }
+      });
+})
+
 module.exports = router;
